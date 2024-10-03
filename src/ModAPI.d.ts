@@ -1535,6 +1535,13 @@ declare namespace ModAPI {
 
     // TODO: add other globals and more comments
 
+    namespace meta{
+        let title: any;
+        let credits: any;
+        let description: any;
+    }
+
+
     /** The version of the EaglerForge.*/
     let version: string;
     /**The brand of the Eaglercraft client, taken from ClientBrandRetriever.java */
