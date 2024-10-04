@@ -1,3 +1,5 @@
+import { changeMainMenu, keyboardEvent } from "./gui";
+import { modules } from "./util/actualModules";
 ModAPI.meta.title("Justin v2");
 ModAPI.meta.credits("Murturtle");
 ModAPI.meta.description("Press right shift ;)");
@@ -5,6 +7,25 @@ ModAPI.require("player");
 ModAPI.require("network");
 ModAPI.require("settings");
 ModAPI.require("world");
+
+
+
+
+//@ts-ignore
+const MainMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiMainMenu_drawScreen;
+//@ts-ignore
+ModAPI.hooks.methods.nmcg_GuiMainMenu_drawScreen = function (...n) {
+  changeMainMenu();
+  return MainMenuDrawfunc.apply(this, n);
+};
+document.addEventListener("keydown", keyboardEvent);
+ModAPI.addEventListener("update", () => {
+  for (let i in modules) {
+    if (modules.hasOwnProperty(i)) {
+      modules[i].function.onUpdate();
+    }
+  }
+});
 
 
 

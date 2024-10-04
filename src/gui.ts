@@ -341,3 +341,43 @@ export function refreshModules(logmessage) {
     }
   }
 }
+//@ts-ignore
+var MainMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen;
+export function changeMainMenu() {
+  //ill rename these later to the actual button names
+  //@ts-ignore
+  const firstButton = ModAPI.mc.currentScreen.buttonList.array1[0];
+  //@ts-ignore
+  const secondButton = ModAPI.mc.currentScreen.buttonList.array1[1];
+  //@ts-ignore
+  const thirdButton = ModAPI.mc.currentScreen.buttonList.array1[2];
+  //@ts-ignore
+  const fourthButton = ModAPI.mc.currentScreen.buttonList.array1[3];
+
+  firstButton.width17 = thirdButton.width17;
+  secondButton.width17 = fourthButton.width17;
+  firstButton.yPosition = thirdButton.yPosition - 25;
+  secondButton.yPosition = fourthButton.yPosition - 25;
+  secondButton.xPosition0 = fourthButton.xPosition0;
+  //@ts-ignore
+  ModAPI.mc.currentScreen.enableBlur = 0;
+  //@ts-ignore
+  ModAPI.mc.currentScreen.panoramaTimer -= 1;
+  //@ts-ignore
+  ModAPI.mc.currentScreen.splashText = ModAPI.util.string(clientName);
+}
+export function keyboardEvent(event) {
+  if (event.code == "ShiftRight") {
+    if (!isOpen()) {
+      open();
+    }
+  }
+  //@ts-ignore
+  if (ModAPI.mc.currentScreen == null && ModAPI.mc.ingameGUI != null) {
+    for (let d in modules) {
+      if (event.code == modules[d].function.toggleKey) {
+        modules[d].function.toggle();
+      }
+    }
+  }
+}
