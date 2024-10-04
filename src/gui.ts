@@ -64,7 +64,9 @@ export function setting(module) {
   close.style.right = "15px";
   close.style.top = "10px";
   close.style.cursor = "pointer";
-
+  close.onclick = function() {
+    destroy();
+  };
   s.appendChild(close);
   const s2 = s;
   function E({ movementX, movementY }) {
@@ -263,7 +265,9 @@ export function open() {
   close.style.right = "15px";
   close.style.top = "10px";
   close.style.cursor = "pointer";
-
+  close.onclick = function() {
+    destroy();
+  };
   ui.appendChild(close);
   const bar = document.createElement("div");
   bar.style.overflowX = "scroll";
