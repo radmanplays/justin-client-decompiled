@@ -8,7 +8,7 @@ export function destroy() {
     document.getElementById("ui").remove();
   }
   //@ts-ignore
-  ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen = mn;
+  ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen = ingameMenuDrawfunc;
 
   if (
     //@ts-ignore
@@ -346,7 +346,7 @@ export function refreshModules(logmessage) {
   }
 }
 //@ts-ignore
-var MainMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen;
+var ingameMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen;
 export function changeMainMenu() {
   //ill rename these later to the actual button names
   //@ts-ignore
