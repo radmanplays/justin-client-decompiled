@@ -65,7 +65,7 @@ export function setting(module) {
   close.style.top = "10px";
   close.style.cursor = "pointer";
   close.onclick = function() {
-    destroy();
+    s.remove();
   };
   s.appendChild(close);
   const s2 = s;
