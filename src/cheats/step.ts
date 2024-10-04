@@ -16,8 +16,6 @@ export function init(parent) {
         if (ModAPI.player.stepHeight != parent.settings[0].current) {
           //@ts-ignore
           ModAPI.player.stepHeight = parent.settings[0].current;
-          //@ts-ignore
-          ModAPI.player.reload();
         }
     }
   }
@@ -27,8 +25,6 @@ export function init(parent) {
     if (ModAPI.player != null) {
       //@ts-ignore
       ModAPI.player.stepHeight = parent.settings[0].current;
-      //@ts-ignore
-      ModAPI.player.reload();
     }
   }
 
@@ -37,8 +33,6 @@ export function init(parent) {
     if (ModAPI.player != null) {
       //@ts-ignore
       ModAPI.player.stepHeight = 0.6000000238418579;
-      //@ts-ignore
-      ModAPI.player.reload();
     }
   }
 
