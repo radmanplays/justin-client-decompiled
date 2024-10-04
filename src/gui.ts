@@ -348,21 +348,20 @@ export function refreshModules(logmessage) {
 //@ts-ignore
 var ingameMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen;
 export function changeMainMenu() {
-  //ill rename these later to the actual button names
   //@ts-ignore
-  const firstButton = ModAPI.mc.currentScreen.buttonList.array1[0];
+  const Singleplayerbtn = ModAPI.mc.currentScreen.buttonList.array1[0];
   //@ts-ignore
-  const secondButton = ModAPI.mc.currentScreen.buttonList.array1[1];
+  const Multiplayerbtn = ModAPI.mc.currentScreen.buttonList.array1[1];
   //@ts-ignore
-  const thirdButton = ModAPI.mc.currentScreen.buttonList.array1[2];
+  const Optionsbtn = ModAPI.mc.currentScreen.buttonList.array1[2];
   //@ts-ignore
-  const fourthButton = ModAPI.mc.currentScreen.buttonList.array1[3];
+  const Profilebtn = ModAPI.mc.currentScreen.buttonList.array1[3];
 
-  firstButton.width17 = thirdButton.width17;
-  secondButton.width17 = fourthButton.width17;
-  firstButton.yPosition = thirdButton.yPosition - 25;
-  secondButton.yPosition = fourthButton.yPosition - 25;
-  secondButton.xPosition0 = fourthButton.xPosition0;
+  Singleplayerbtn.width17 = Optionsbtn.width17;
+  Multiplayerbtn.width17 = Profilebtn.width17;
+  Singleplayerbtn.yPosition = Optionsbtn.yPosition - 25;
+  Multiplayerbtn.yPosition = Profilebtn.yPosition - 25;
+  Multiplayerbtn.xPosition0 = Profilebtn.xPosition0;
   //@ts-ignore
   ModAPI.mc.currentScreen.enableBlur = 0;
   //@ts-ignore
