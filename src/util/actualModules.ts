@@ -7,6 +7,7 @@ import * as asynceventsMOD from "../cheats/render/asyncevents";
 import * as entitydistanceMOD from "../cheats/render/entitydistance";
 import * as pointfiveMOD from "../cheats/render/pointfive";
 import * as passwordhiderMOD from "../cheats/render/passwordhider";
+import * as espMOD from "../cheats/render/esp";
 import * as ui from "../gui";
 
 function template(mod) {
@@ -86,12 +87,12 @@ export var modules = {
       category: "Render",
       description: "Hides password when typing it in",
     },
-    // esp: {
-    //   name: "ESP",
-    //   function: new template(D),
-    //   category: "Render",
-    //   description: "Shows entities through walls",
-    // },
+    esp: {
+      name: "ESP",
+      function: new template(espMOD),
+      category: "Render",
+      description: "Shows entities through walls",
+    },
     // outline: {
     //   name: "Custom Outline",
     //   function: new template(X),
