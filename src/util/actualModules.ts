@@ -2,6 +2,11 @@ import * as stepMOD from "../cheats/step";
 import * as servercrasherMOD from "../cheats/servercrasher";
 import * as arraylistMOD from "../cheats/render/arraylist";
 import * as minimapMOD from "../cheats/render/minimap";
+import * as renderdisablerMOD from "../cheats/render/renderdisabler";
+import * as asynceventsMOD from "../cheats/render/asyncevents";
+import * as entitydistanceMOD from "../cheats/render/entitydistance";
+import * as pointfiveMOD from "../cheats/render/pointfive";
+import * as passwordhiderMOD from "../cheats/render/passwordhider";
 import * as ui from "../gui";
 
 function template(mod) {
@@ -49,38 +54,38 @@ export var modules = {
       category: "Render",
       description: "Shows nearby entities",
     },
-    // renderdisabler: {
-    //   name: "Render Disabler",
-    //   function: new template(L),
-    //   category: "Render",
-    //   description: "Disable some renders and get more fps",
-    // },
-    // asyncevents: {
-    //   name: "Async Events",
-    //   function: new template(b),
-    //   category: "Render",
-    //   description:
-    //     "Asynchronize intensive events, not supported with shaders and VERY buggy. Best for pvp serveres",
-    // },
-    // entitydistance: {
-    //   name: "Entity Distance",
-    //   function: new template(V),
-    //   category: "Render",
-    //   description: "Lowers entity distance to improve performance",
-    // },
-    // pointfive: {
-    //   name: "+0.5 Render Distance",
-    //   function: new template(Y),
-    //   category: "Render",
-    //   description:
-    //     "Increases fps by desyncing loading/unloading chunks by adding 0.5 to the render distance",
-    // },
-    // passwordhider: {
-    //   name: "Password Hider",
-    //   function: new template(Z),
-    //   category: "Render",
-    //   description: "Hides password when typing it in",
-    // },
+    renderdisabler: {
+      name: "Render Disabler",
+      function: new template(renderdisablerMOD),
+      category: "Render",
+      description: "Disable some renders and get more fps",
+    },
+    asyncevents: {
+      name: "Async Events",
+      function: new template(asynceventsMOD),
+      category: "Render",
+      description:
+        "Asynchronize intensive events, not supported with shaders and VERY buggy. Best for pvp serveres",
+    },
+    entitydistance: {
+      name: "Entity Distance",
+      function: new template(entitydistanceMOD),
+      category: "Render",
+      description: "Lowers entity distance to improve performance",
+    },
+    pointfive: {
+      name: "+0.5 Render Distance",
+      function: new template(pointfiveMOD),
+      category: "Render",
+      description:
+        "Increases fps by desyncing loading/unloading chunks by adding 0.5 to the render distance",
+    },
+    passwordhider: {
+      name: "Password Hider",
+      function: new template(passwordhiderMOD),
+      category: "Render",
+      description: "Hides password when typing it in",
+    },
     // esp: {
     //   name: "ESP",
     //   function: new template(D),

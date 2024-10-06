@@ -1,4 +1,4 @@
-function init(parent) {
+export function init(parent) {
   let settings = [
     { name: "Particles", type: "Boolean", toggled: true },
     { name: "Entities", type: "Boolean", toggled: false },
