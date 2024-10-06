@@ -1,5 +1,7 @@
 import * as stepMOD from "../cheats/step";
 import * as servercrasherMOD from "../cheats/servercrasher";
+import * as arraylistMOD from "../cheats/render/arraylist";
+import * as minimapMOD from "../cheats/render/minimap";
 import * as ui from "../gui";
 
 function template(mod) {
@@ -35,18 +37,18 @@ export var categories = {
 }
 
 export var modules = {
-    // arraylist: {
-    //   name: "Array List",
-    //   function: new template(q),
-    //   category: "Render",
-    //   description: "Shows your enabled mods",
-    // },
-    // minimap: {
-    //   name: "Mini Map",
-    //   function: new template(z),
-    //   category: "Render",
-    //   description: "Shows nearby entities",
-    // },
+    arraylist: {
+      name: "Array List",
+      function: new template(arraylistMOD),
+      category: "Render",
+      description: "Shows your enabled mods",
+    },
+    minimap: {
+      name: "Mini Map",
+      function: new template(minimapMOD),
+      category: "Render",
+      description: "Shows nearby entities",
+    },
     // renderdisabler: {
     //   name: "Render Disabler",
     //   function: new template(L),
