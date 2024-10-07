@@ -93,18 +93,18 @@ export var modules = {
       category: "Render",
       description: "Shows entities through walls",
     },
-    // outline: {
-    //   name: "Custom Outline",
-    //   function: new template(X),
-    //   category: "Render",
-    //   description: "Change the color of the properties of the block outline",
-    // },
-    // killaura: {
-    //   name: "Kill Aura",
-    //   function: new template(j),
-    //   category: "Combat",
-    //   description: "Attack players around you",
-    // },
+    outline: {
+      name: "Custom Outline",
+      function: new template(X),
+      category: "Render",
+      description: "Change the color of the properties of the block outline",
+    },
+    killaura: {
+      name: "Kill Aura",
+      function: new template(j),
+      category: "Combat",
+      description: "Attack players around you",
+    },
     step: {
       name: "Step",
       function: new template(stepMOD),
