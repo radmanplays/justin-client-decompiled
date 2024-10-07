@@ -1,8 +1,10 @@
+import { rgbColor } from "../../util/clientName";
+
 export function init(parent) {
     let colorSettings = [
-        { name: "Red", type: "Slider", min: 0, max: 1, step: 0.1, current: N.r },
-        { name: "Green", type: "Slider", min: 0, max: 1, step: 0.1, current: N.g },
-        { name: "Blue", type: "Slider", min: 0, max: 1, step: 0.01, current: N.b },
+        { name: "Red", type: "Slider", min: 0, max: 1, step: 0.1, current: rgbColor.r },
+        { name: "Green", type: "Slider", min: 0, max: 1, step: 0.1, current: rgbColor.g },
+        { name: "Blue", type: "Slider", min: 0, max: 1, step: 0.01, current: rgbColor.b },
         { name: "Alpha", type: "Slider", min: 0, max: 1, step: 0.01, current: 1 },
     ];
 

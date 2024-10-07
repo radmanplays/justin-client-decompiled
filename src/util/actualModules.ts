@@ -8,6 +8,7 @@ import * as entitydistanceMOD from "../cheats/render/entitydistance";
 import * as pointfiveMOD from "../cheats/render/pointfive";
 import * as passwordhiderMOD from "../cheats/render/passwordhider";
 import * as espMOD from "../cheats/render/esp";
+import * as espMOD from "../cheats/render/";
 import * as ui from "../gui";
 
 function template(mod) {
