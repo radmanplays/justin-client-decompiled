@@ -8,7 +8,14 @@ import * as entitydistanceMOD from "../cheats/render/entitydistance";
 import * as pointfiveMOD from "../cheats/render/pointfive";
 import * as passwordhiderMOD from "../cheats/render/passwordhider";
 import * as espMOD from "../cheats/render/esp";
-import * as espMOD from "../cheats/render/";
+import * as outlineMOD from "../cheats/render/outline";
+import * as killauraMOD from "../cheats/killaura";
+import * as timerMOD from "../cheats/timer";
+import * as fastplaceMOD from "../cheats/fastplace";
+import * as airjumpMOD from "../cheats/airjump";
+import * as nofallMOD from "../cheats/nofall";
+
+
 import * as ui from "../gui";
 
 function template(mod) {
@@ -96,13 +103,13 @@ export var modules = {
     },
     outline: {
       name: "Custom Outline",
-      function: new template(X),
+      function: new template(outlineMOD),
       category: "Render",
       description: "Change the color of the properties of the block outline",
     },
     killaura: {
       name: "Kill Aura",
-      function: new template(j),
+      function: new template(killauraMOD),
       category: "Combat",
       description: "Attack players around you",
     },
@@ -112,30 +119,30 @@ export var modules = {
       category: "Movement",
       description: "Allows you to step higher",
     },
-    // timer: {
-    //   name: "Timer",
-    //   function: new template(K),
-    //   category: "Player",
-    //   description: "Modify client side tps",
-    // },
-    // fastplace: {
-    //   name: "Fast Place",
-    //   function: new template(O),
-    //   category: "Player",
-    //   description: "Allows you to place blocks fast",
-    // },
-    // airjump: {
-    //   name: "Air Jump",
-    //   function: new template(x),
-    //   category: "Player",
-    //   description: "Allows you to jump even if you are not on the ground",
-    // },
-    // nofall: {
-    //   name: "No Fall",
-    //   function: new template(v),
-    //   category: "Player",
-    //   description: "You won't take any fall damage",
-    // },
+    timer: {
+      name: "Timer",
+      function: new template(timerMOD),
+      category: "Player",
+      description: "Modify client side tps",
+    },
+    fastplace: {
+      name: "Fast Place",
+      function: new template(fastplaceMOD),
+      category: "Player",
+      description: "Allows you to place blocks fast",
+    },
+    airjump: {
+      name: "Air Jump",
+      function: new template(airjumpMOD),
+      category: "Player",
+      description: "Allows you to jump even if you are not on the ground",
+    },
+    nofall: {
+      name: "No Fall",
+      function: new template(nofallMOD),
+      category: "Player",
+      description: "You won't take any fall damage",
+    },
     servercrasher: {
       name: "Server Crasher",
       function: new template(servercrasherMOD),
