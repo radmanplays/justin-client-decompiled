@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "justin client v2",
   "scripts": {
-    "build-bun": "bun build --bundle ./src/main.ts --outdir=. --outfile=build/index.js --sourcemap=inline --target browser --minify"
+    "build-bun": "bun build --bundle ./src/index.ts --outdir=build/ --outfile=build/index.js --sourcemap=inline --target browser --minify"
   },
   "author": "Murturtle",
   "devDependencies": {
