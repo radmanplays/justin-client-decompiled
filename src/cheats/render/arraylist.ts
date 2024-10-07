@@ -2,7 +2,7 @@ import { isOpen } from "../../gui";
 import { modules } from "../../util/actualModules";
 import { clientName, color } from "../../util/clientName";
 
-function init(parent) {
+export function init(parent) {
     function arrayequals(array1, array2) {
       if (array1 === array2) {
         return true;
