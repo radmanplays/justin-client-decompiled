@@ -90,6 +90,7 @@ export function init(parent) {
     });
   
     parent.onUpdate = () => {
+      setTimeout(() => {
       if (
         (parent.getEnabled() &&
           //@ts-ignore
@@ -128,6 +129,7 @@ export function init(parent) {
       } else {
         displayElement.hidden = true;
       }
+      }, 1);
     };
   
     ModAPI.addEventListener("frame", () => {

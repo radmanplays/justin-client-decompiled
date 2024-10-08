@@ -5,7 +5,7 @@ import * as minimapMOD from "../cheats/render/minimap";
 import * as renderdisablerMOD from "../cheats/render/renderdisabler";
 import * as asynceventsMOD from "../cheats/render/asyncevents";
 import * as entitydistanceMOD from "../cheats/render/entitydistance";
-import * as pointfiveMOD from "../cheats/render/pointfive";
+import * as onerenderdistance from "../cheats/render/onerenderdistance";
 import * as passwordhiderMOD from "../cheats/render/passwordhider";
 import * as espMOD from "../cheats/render/esp";
 import * as outlineMOD from "../cheats/render/outline";
@@ -14,6 +14,7 @@ import * as timerMOD from "../cheats/timer";
 import * as fastplaceMOD from "../cheats/fastplace";
 import * as airjumpMOD from "../cheats/airjump";
 import * as nofallMOD from "../cheats/nofall";
+import * as bednukerMOD from "../cheats/bednuker";
 
 
 import * as ui from "../gui";
@@ -82,12 +83,12 @@ export var modules = {
       category: "Render",
       description: "Lowers entity distance to improve performance",
     },
-    pointfive: {
-      name: "+0.5 Render Distance",
-      function: new template(pointfiveMOD),
+    onerenderdistance: {
+      name: "True One Chunk",
+      function: new template(onerenderdistance),
       category: "Render",
       description:
-        "Increases fps by desyncing loading/unloading chunks by adding 0.5 to the render distance",
+        "Actual one chunk render distance",
     },
     passwordhider: {
       name: "Password Hider",
@@ -142,6 +143,12 @@ export var modules = {
       function: new template(nofallMOD),
       category: "Player",
       description: "You won't take any fall damage",
+    },
+    bednuker: {
+      name: "Bed Nuker",
+      function: new template(bednukerMOD),
+      category: "Player",
+      description: "Destroy beds through defenses",
     },
     servercrasher: {
       name: "Server Crasher",

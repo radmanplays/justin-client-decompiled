@@ -348,6 +348,7 @@ export function refreshModules(logmessage) {
 //@ts-ignore
 var ingameMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiIngameMenu_drawScreen;
 export function changeMainMenu() {
+  /*
   //@ts-ignore
   const Singleplayerbtn = ModAPI.mc.currentScreen.buttonList.array1[0];
   //@ts-ignore
@@ -367,7 +368,7 @@ export function changeMainMenu() {
   //@ts-ignore
   ModAPI.mc.currentScreen.panoramaTimer -= 1;
   //@ts-ignore
-  ModAPI.mc.currentScreen.splashText = ModAPI.util.string(clientName);
+  ModAPI.mc.currentScreen.splashText = ModAPI.util.string(clientName);*/
 }
 export function keyboardEvent(event) {
   if (event.code == "ShiftRight") {
