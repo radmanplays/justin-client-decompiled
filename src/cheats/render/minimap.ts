@@ -1,6 +1,6 @@
 import { isOpen } from "../../gui";
 
-function init(parent) {
+export function init(parent) {
     parent.settings = [
       { name: "Friendly Color", type: "Color", current: "#0000ff" },
       { name: "Enemy Color", type: "Color", current: "#ff0000" },
