@@ -15,6 +15,7 @@ import * as fastplaceMOD from "../cheats/fastplace";
 import * as airjumpMOD from "../cheats/airjump";
 import * as nofallMOD from "../cheats/nofall";
 import * as bednukerMOD from "../cheats/bednuker";
+import * as safewalkMOD from "../cheats/safewalk";
 
 
 import * as ui from "../gui";
@@ -119,6 +120,12 @@ export var modules = {
       function: new template(stepMOD),
       category: "Movement",
       description: "Allows you to step higher",
+    },
+    safewalk: {
+      name: "Safe Walk",
+      function: new template(safewalkMOD),
+      category: "Movement",
+      description: "Shift at ledges of blocks",
     },
     timer: {
       name: "Timer",

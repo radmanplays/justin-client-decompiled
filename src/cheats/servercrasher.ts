@@ -14,7 +14,8 @@ export function init(parent) {
   ]
 
   function crash() {
-    if (ModAPI.player != null) {
+    //@ts-ignore
+    if (ModAPI.mc.theWorld != null) {
       for (let i = 0; i < parent.settings[0].current; i++) {
         //@ts-ignore
         ModAPI.network.addToSendQueue(

@@ -301,22 +301,22 @@ export function refreshModules(logmessage) {
 
   if (isOpen()) {
     container.innerHTML = "";
-    for (let d in modules) {
-      if (modules.hasOwnProperty(d)) {
+    for (let mod in modules) {
+      if (modules.hasOwnProperty(mod)) {
         const o = document.createElement("div");
         o.addEventListener("click", (P) => {
-          console.log(modules[d]);
-          modules[d].function.toggle();
+          console.log(modules[mod]);
+          modules[mod].function.toggle();
           refreshModules("modl");
         });
-        const A = document.createElement("div");
-        A.innerText = `${modules[d].name}`;
-        A.style.fontSize = "22px";
-        A.style.fontWeight = "bold";
-        o.appendChild(A);
+        const modname = document.createElement("div");
+        modname.innerText = `${modules[mod].name}`;
+        modname.style.fontSize = "22px";
+        modname.style.fontWeight = "bold";
+        o.appendChild(modname);
         o.appendChild(document.createElement("hr"));
         const c = document.createElement("div");
-        c.innerText = `${modules[d].description}`;
+        c.innerText = `${modules[mod].description}`;
         o.appendChild(c);
         o.style.textAlign = "left";
         o.style.display = "inline-block";
@@ -330,14 +330,14 @@ export function refreshModules(logmessage) {
         o.style.overflowY = "scroll";
         o.style.background = "rgba(100,100,100,0.5)";
 
-        if (modules[d].function.getEnabled()) {
+        if (modules[mod].function.getEnabled()) {
           o.style.boxShadow = `0px 0px 15px ${color}`;
         }
 
         o.oncontextmenu = (P) => {
           P.preventDefault();
-          new setting(modules[d]);
-          console.log(modules[d]);
+          new setting(modules[mod]);
+          console.log(modules[mod]);
         };
 
         container.appendChild(o);

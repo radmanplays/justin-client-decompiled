@@ -1,5 +1,6 @@
-import { changeMainMenu, keyboardEvent } from "./gui";
+import { changeMainMenu, isOpen, keyboardEvent } from "./gui";
 import { modules } from "./util/actualModules";
+import { authors, clientName, clientNameRaw, color, downloadurl, version } from "./util/clientName";
 ModAPI.meta.title("Justin v2");
 ModAPI.meta.credits("Murturtle");
 ModAPI.meta.description("Press right shift ;)");
@@ -7,17 +8,230 @@ ModAPI.require("player");
 ModAPI.require("network");
 ModAPI.require("settings");
 ModAPI.require("world");
+modules.arraylist.function.enable();
+modules.minimap.function.enable();
+modules.renderdisabler.function.enable();
+modules.passwordhider.function.enable();
+modules.asyncevents.function.enable();
+modules.outline.function.enable();
+
+
+function showMenu() {
+  menuElement.style.animation = "";
+  menuElement.style.opacity = "1";
+  menuElement.style.display = "block";
+}
+
+function hideMenu() {
+  setTimeout(() => {
+    menuElement.style.animation = "fade-out 0.5s linear";
+
+    setTimeout(() => {
+      menuElement.style.opacity = "0";
+      menuElement.style.display = "none";
+    }, 450);
+  }, 100);
+}
 
  
 
 
 //@ts-ignore
-const MainMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiMainMenu_drawScreen;
+const MainMenuDrawfunc = ModAPI.hooks.methods.nmcg_GuiMainMenu_initGui;
 //@ts-ignore
-ModAPI.hooks.methods.nmcg_GuiMainMenu_drawScreen = function (...n) {
-  changeMainMenu();
-  return MainMenuDrawfunc.apply(this, n);
+ModAPI.hooks.methods.mainMenuInitGui = function (...args) {
+  showMenu();
+
+  setTimeout(() => {
+    //@ts-ignore
+    if (ModAPI.mc.currentScreen != null) {
+      if (
+        //@ts-ignore
+        ModAPI.mc.currentScreen.getRef().constructor.name === "nmcg_GuiMainMenu" &&
+        menuElement.style.display === "block"
+      ) {
+        //@ts-ignore
+        console.log(ModAPI.mc.currentScreen.getRef().constructor.name);
+      } else {
+        hideMenu();
+      }
+    } else {
+      hideMenu();
+    }
+  }, 250);
+
+  return MainMenuDrawfunc.apply(this, args);
 };
+//@ts-ignore
+const originalDrawScreen = ModAPI.hooks.methods.nmcg_GuiMainMenu_drawScreen;
+//@ts-ignore
+ModAPI.hooks.methods.mainMenuDrawScreen = function (...args) {
+  showMenu();
+  return originalDrawScreen.apply(this, args);
+};
+
+var menuElement = document.createElement("div");
+menuElement.style.position = "fixed";
+menuElement.style.top = "0";
+menuElement.style.left = "0";
+menuElement.style.bottom = "0";
+menuElement.style.left = "0";
+menuElement.style.background = "rgba(50,50,50,1)";
+menuElement.style.width = "100%";
+menuElement.style.height = "100%";
+menuElement.style.fontFamily = "monospace";
+menuElement.style.display = "none";
+document.body.appendChild(menuElement);
+
+const titleElement = document.createElement("div");
+titleElement.innerText = clientNameRaw;
+titleElement.style.textShadow = `${color} 3px 3px 0px`;
+titleElement.style.color = "white";
+titleElement.style.display = "flex";
+titleElement.style.justifyContent = "center";
+titleElement.style.fontSize = "5em";
+titleElement.style.marginTop = "10%";
+menuElement.appendChild(titleElement);
+
+const versiontext = document.createElement("div");
+versiontext.style.fontSize = ".2em";
+versiontext.innerText = version;
+versiontext.style.textShadow = "none";
+titleElement.appendChild(versiontext);
+
+const buttonContainer = document.createElement("div");
+buttonContainer.style.background = "rgba(100,100,100,1)";
+buttonContainer.style.position = "fixed";
+buttonContainer.style.width = "25%";
+buttonContainer.style.left = "20%";
+buttonContainer.style.padding = "10px";
+buttonContainer.style.borderRadius = "15px";
+buttonContainer.style.top = "60%";
+buttonContainer.style.transform = "translate(0,-50%)";
+menuElement.appendChild(buttonContainer);
+
+const buttonStyle = {
+  background: "rgba(50,50,50,1)",
+  fontFamily: "monospace",
+  color: "white",
+  width: "100%",
+  border: "none",
+  borderRadius: "10px",
+  padding: "15px",
+  textAlign: "left",
+  fontSize: "1.5em",
+  marginTop: "7px",
+  marginBottom: "7px",
+};
+
+const singleplayerButton = createButton("Singleplayer", () => {
+  //@ts-ignore
+  ModAPI.mc.displayGuiScreen(
+    //@ts-ignore
+    ModAPI.reflect
+      .getClassByName("GuiScreenIntegratedServerStartup")
+      //@ts-ignore
+      .constructors[0](ModAPI.mc.currentScreen.getRef())
+  );
+
+  hideMenu();
+});
+buttonContainer.appendChild(singleplayerButton);
+
+const multiplayerButton = createButton("Multiplayer", () => {
+  //@ts-ignore
+  ModAPI.mc.displayGuiScreen(
+    //@ts-ignore
+    ModAPI.reflect
+      .getClassByName("GuiMultiplayer")
+      //@ts-ignore
+      .constructors[0](ModAPI.mc.currentScreen.getRef())
+  );
+
+  hideMenu();
+});
+buttonContainer.appendChild(multiplayerButton);
+
+const optionsButton = createButton("Options", () => {
+  //@ts-ignore
+  ModAPI.mc.displayGuiScreen(
+    //@ts-ignore
+    ModAPI.reflect
+      .getClassByName("GuiOptions")
+      //@ts-ignore
+      .constructors[0](ModAPI.mc.currentScreen.getRef())
+  );
+
+  hideMenu();
+});
+buttonContainer.appendChild(optionsButton);
+
+const editProfileButton = createButton("Edit Profile", () => {
+  //@ts-ignore
+  ModAPI.mc.displayGuiScreen(
+    //@ts-ignore
+    ModAPI.reflect
+      .getClassByName("GuiScreenEditProfile")
+      //@ts-ignore
+      .constructors[0](ModAPI.mc.currentScreen.getRef())
+  );
+
+  hideMenu();
+});
+buttonContainer.appendChild(editProfileButton);
+
+const rightPanel = document.createElement("div");
+rightPanel.style.background = "rgba(100,100,100,1)";
+rightPanel.style.position = "fixed";
+rightPanel.style.width = "25%";
+rightPanel.style.padding = "10px";
+rightPanel.style.borderRadius = "15px";
+rightPanel.style.top = "60%";
+rightPanel.style.transform = "translate(0,-50%)";
+rightPanel.style.right = "20%";
+menuElement.appendChild(rightPanel);
+
+const clickGuiButton = createButton("Click Gui", () => {
+  if (!isOpen()) {
+    open();
+  }
+});
+rightPanel.appendChild(clickGuiButton);
+
+const downloadsButton = createButton("Downloads", () => {
+  alert(downloadurl);
+});
+downloadsButton.style.overflowX = "auto";
+downloadsButton.style.overflowY = "auto";
+rightPanel.appendChild(downloadsButton);
+
+const exitButton = createButton("Exit", () => {
+  window.location.replace("https://google.com");
+});
+rightPanel.appendChild(exitButton);
+
+const footerElement = document.createElement("div");
+let footerText = "Created By: ";
+authors.forEach((creator, index) => {
+  footerText += index === authors.length - 1 ? creator : `${creator} & `;
+});
+footerElement.innerText = footerText;
+footerElement.style.position = "fixed";
+footerElement.style.bottom = "0";
+footerElement.style.left = "0";
+footerElement.style.color = color;
+footerElement.style.fontSize = "1.5em";
+menuElement.appendChild(footerElement);
+
+// Helper function to create buttons
+function createButton(text, onClick) {
+  const button = document.createElement("button");
+  Object.assign(button.style, buttonStyle);
+  button.innerText = text;
+  button.onclick = onClick;
+  return button;
+}
+
 document.addEventListener("keydown", keyboardEvent);
 ModAPI.addEventListener("update", () => {
   for (let i in modules) {

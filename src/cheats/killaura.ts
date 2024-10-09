@@ -138,7 +138,7 @@ export function init(parent) {
                                                         ModAPI.player.onGround
                                                     )
                                                 );
-                                            }, 1);
+                                            }, 50);
                                         }
                                     }
                                 }

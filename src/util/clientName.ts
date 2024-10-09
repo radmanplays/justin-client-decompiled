@@ -6,7 +6,11 @@ function hexToRgb(hexColor: string) {
   }
   
   export var clientName: string = "Justin Client v2";
+  export var clientNameRaw: string = "Justin Client";
+  export var version: string = "rev6";
+  export var downloadurl: string = "https://bit.ly/JustinCEag";
   export var color: string = "#00c3ff";
+  export var authors: string[] = ["Murturtle"];
   export var rgbColor = hexToRgb(color);
   export var normalizedRgb = {
     r: Math.round((rgbColor.r / 255 + Number.EPSILON) * 100) / 100,

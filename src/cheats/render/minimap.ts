@@ -63,9 +63,9 @@ export function init(parent) {
           ModAPI.world.loadedEntityList.array1.forEach((entity) => {
             if (entity != null) {
               //@ts-ignore
-              const posx = ModAPI.player.posX - entity.posX + 100;
+              const posx = entity.posX - ModAPI.player.posX + 100;
               //@ts-ignore
-              const posy = ModAPI.player.posZ - entity.posZ + 100;
+              const posy = entity.posZ - ModAPI.player.posZ + 100;
               if (entity.getRef().constructor.name == "nmce_EntityOtherPlayerMP") {
                 context.fillStyle = parent.settings[1].current;
               } else {
