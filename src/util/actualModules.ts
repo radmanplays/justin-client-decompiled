@@ -16,6 +16,7 @@ import * as airjumpMOD from "../cheats/airjump";
 import * as nofallMOD from "../cheats/nofall";
 import * as bednukerMOD from "../cheats/bednuker";
 import * as safewalkMOD from "../cheats/safewalk";
+import * as aimassistMOD from "../cheats/aimassist";
 
 
 import * as ui from "../gui";
@@ -114,6 +115,12 @@ export var modules = {
       function: new template(killauraMOD),
       category: "Combat",
       description: "Attack players around you",
+    },
+    aimassist: {
+      name: "Aim Assist",
+      function: new template(aimassistMOD),
+      category: "Combat",
+      description: "Helps you aim",
     },
     step: {
       name: "Step",

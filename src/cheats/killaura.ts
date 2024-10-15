@@ -5,23 +5,31 @@ export function init(parent) {
         { name: "Reach", type: "Slider", min: 0, max: 6, step: 0.1, current: 3 },
         { name: "Ignore GUI", type: "Boolean", toggled: false },
         {
-            name: "Attack Delay (ms)",
-            type: "Slider",
-            min: 125,
-            max: 500,
-            step: 5,
-            current: 125,
+          name: "Attack Delay (ms)",
+          type: "Slider",
+          min: 125,
+          max: 500,
+          step: 5,
+          current: 125,
         },
         { name: "Packet Look", type: "Boolean", toggled: false },
-        { name: "Packet Click", type: "Boolean", toggled: false },
-        { name: "Disable On Death", type: "Boolean", toggled: true },
-    ];
+        { name: "Packet Click", type: "Boolean", toggled: true },
+      ];
 
-    parent.toggleKey = "KeyN";
     let lastAttackTime = 0;
     //@ts-ignore
     const packetConstructor = ModAPI.reflect.getClassByName("C03PacketPlayer$C05PacketPlayerLook")
         .constructors[1];
+
+        //@ts-ignore
+        const GameOverScreen = ModAPI.hooks.methods.nmcg_GuiGameOver_initGui;
+        //@ts-ignore
+        ModAPI.hooks.methods.nmcg_GuiGameOver_initGui = function (...g) {
+          if (parent.settings[5].toggled && parent.getEnabled()) {
+            parent.disable();
+          }
+          return GameOverScreen.apply(this, g);
+        };
     
     //@ts-ignore
     const originalGameOverInit = ModAPI.hooks.methods.nmcg_GuiGameOver_initGui;
@@ -138,7 +146,7 @@ export function init(parent) {
                                                         ModAPI.player.onGround
                                                     )
                                                 );
-                                            }, 50);
+                                            }, 1);
                                         }
                                     }
                                 }
